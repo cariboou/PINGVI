@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Header-->
+<header class="py-5" style="margin-top: -100px; margin-bottom: -100px;">
+    <div class="container px-lg-5">
+        <div class="p-4 p-lg-5 rounded-3 text-center">
+            <div class="m-4 m-lg-5">
+                <h1 class="display-5 fw-bold">PINGVI<br>делает психотерапию удобной!</h1>
+                <p class="fs-4">Мы создаем простой сервис и берем все заботы на себя, чтобы вы могли сосредоточиться на самом важном</p>
+                {% if not request.user.is_authenticated%}
+                <a class="btn btn-success btn-lg" href="{% url 'register' %}">Регистрация</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
+       
+<!-- Page content-->
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="cart h-100">
+                <div class="text-center">
+                    <img src="{% static 'pingvi_app/img/home1.jpg' %}" class="card-img-top w-75 center-block" alt="Не удалось загрузить картинку">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">Помогаем найти именно «вашего» специалиста</h5>
+                    <p class="card-text text-center">Если психолог не подойдет по каким-то личным причинам, это нормально. Мы обязательно предложим другого</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="cart h-100">
+                <div class="text-center">
+                    <img src="{% static 'pingvi_app/img/home2.jpg' %}" class="card-img-top w-75" alt="Не удалось загрузить картинку">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">Предлагаем профессионалов, в которых уверены</h5>
+                    <p class="card-text text-center">Вам не нужно беспокоиться о квалификации специалиста. Все наши специалисты являются признанными экспертами в своем направлении</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="cart h-100">
+                <div class="text-center">
+                    <img src="{% static 'pingvi_app/img/home3.jpg' %}" class="card-img-top w-75" alt="...">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">Гарантируем понятную и справедливую цену</h5>
+                    <p class="card-text text-center">Подготовка и обучение требует больших финансовых и моральных ресурсов, поэтому чем выше квалификация, тем больше стоимость услуг</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

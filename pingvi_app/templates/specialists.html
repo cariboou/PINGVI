@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static%}
+
+{% block title %}С чего начать?{% endblock %}
+
+{% block content %}
+
+<!-- Page content-->
+
+<div class="conteiner">
+  <div class="row" style="margin-left: 0px; margin-right: 0px;">
+    <div class="col-md-3 col-sm-12">
+      <div class="list-group mt-5">
+        {% for approach in approachs %}
+        <a href="{% url 'get_approach' approach.pk %}" class="list-group-item list-group-item-action">{{ approach|capfirst}}</a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-9 col-sm-12">
+      {% for spec in specialists%}
+      <div class="card mb-3 mt-5" style="max-width: 750px;">
+        <div class="row g-0">
+          <div class="col-md-3">
+            {% if spec.photo%}
+            <img src="{{ spec.photo.url }}" class="img-fluid rounded-start" style="width: 400px;"
+              alt="Не удалось загрузить изображение">
+            {% else %}
+            <img src="{% static 'pingvi_app/img/nophoto.jpg'%}" class="img-fluid rounded-start"
+              style="width: fit-content;" alt="Не удалось загрузить изображение">
+            {% endif %}
+          </div>
+          <div class="col-md-9">
+            <div class="card-body">
+              <h5 class="card-title">{{ spec }}</h5>
+              <p class="card-text">Направление в психотерапии: {{ spec.approach }}</p>
+              <p class="card-text">Научная степень: {{ spec.degree }}</p>
+              <p class="card-text">Достижения и награды: {{ spec.awards_prizes }}</p>
+              <p class="card-text">Стоимость сеанса: {{ spec.price }} руб.</p>
+              {% if request.user.is_authenticated%}
+              <a href="{% url 'appointment' %}" class="btn btn-outline-secondary">Записаться на прием</a>
+              {% else %}
+              <a href="{% url 'user_login' %}" class="btn btn-outline-secondary">Записаться на прием</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor%}
+    </div>
+  </div>
+</div>
+{% endblock %}

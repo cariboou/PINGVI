@@ -1,0 +1,4 @@
+<option value="Не выбрано"></option>
+{% for datetime in datetimes %}
+<option value="{{ datetime.pk }}">{{ datetime }}</option>
+{% endfor %}

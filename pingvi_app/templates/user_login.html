@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Вход в учетную запись{% endblock %}
+{% block login %}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="text-center mt-5">
+        <h1>Вход в личный кабинет</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-sm-1"></div>
+        <div class="col-6">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button class="btn btn-outline-primary" type="submit">Войти</button>
+                </div>  
+            </form>
+            <p class = "mt-5 text-center"><a class="nav-link" href="{% url 'register' %}">Еще не зарегистрированы?</a></p>
+        </div>
+        <div class="col-md-3 col-sm-1"></div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Мои записи{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="text-center mt-5">
+        <h1>Мои записи</h1>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-6">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ФИО специалиста</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for spec in specialists %}
+                  <tr>
+                    <td>{{ spec }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+
+        <div class="col-6">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Дата и время сеанса</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for dt in datetimes %}
+                  <tr>
+                    <td>{{ dt }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
